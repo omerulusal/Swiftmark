@@ -1,6 +1,6 @@
 const Footer = () => {
     return (
-        <div className="w-full h-24 bg-gradient-to-r from-[#ffa72498] to-[#188bff88] md:mt-2 text-slate-100 flex items-center justify-center">
+        <div className="w-full h-24 bg-gradient-to-r from-[#77d9899f] to-[#19528c88] md:mt-2 text-slate-100 flex items-center justify-center">
             <footer className="p-4 md:p-6 text-center">
                 <ul className="flex flex-wrap items-center mt-3 sm:mt-0 justify-center">
                     <li>

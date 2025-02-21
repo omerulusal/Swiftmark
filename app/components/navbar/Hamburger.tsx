@@ -3,7 +3,7 @@ const Hamburger = () => {
 
     return (
         <div className="relative flex md:hidden">
-            <button>
+            <button type='button' >
                 <GiHamburgerMenu />
             </button>
         </div>
@@ -11,3 +11,6 @@ const Hamburger = () => {
 }
 
 export default Hamburger
+/**
+ * md:hidden ile pc altındaki cihazlarda göruncek
+ */

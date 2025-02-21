@@ -1,9 +1,14 @@
-import React from 'react'
 
 const CardCount = () => {
   return (
-    <div>CardCount</div>
+    <div className="hidden md:flex">
+      CardCount
+    </div>
   )
 }
 
 export default CardCount
+
+/**
+ * md:flex ile pc de göruncek aynısını searchtada yaptım
+ */
