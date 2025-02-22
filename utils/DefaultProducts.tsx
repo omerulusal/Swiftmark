@@ -1,6 +1,6 @@
-export const products = [
+export const defaultUrunler = [
     {
-        "id": "1",
+        "id": "asjkankjw455",
         "name": "iPhone 14 Pro Max",
         "description": "Apple'ın en yeni amiral gemisi akıllı telefonu. 6,7 inç OLED ekrana, A16 Bionic çipe ve 48 megapiksellik ana kameraya sahip.",
         "price": 12.999,
@@ -22,7 +22,7 @@ export const products = [
         ]
     },
     {
-        "id": "2",
+        "id": "awklfjmwwf65awff",
         "name": "Samsung Galaxy S23 Ultra",
         "description": "Samsung'un en yeni amiral gemisi akıllı telefonu. 6,8 inç OLED ekrana, Snapdragon 8 Gen 2 çipe ve 200 megapiksellik ana kameraya sahip.",
         "price": 11.999,
@@ -44,7 +44,7 @@ export const products = [
         ]
     },
     {
-        "id": "3",
+        "id": "awopfgjke45gss9",
         "name": "Asus ROG Zephyrus G15",
         "description": "Asus'un en yeni oyun dizüstü bilgisayarı. 15,6 inç FHD ekrana, AMD Ryzen 9 7980HX işlemciye ve Nvidia GeForce RTX 4070 Ti GPU'ya sahip.",
         "price": 34.999,
@@ -66,7 +66,7 @@ export const products = [
         ]
     },
     {
-        "id": "4",
+        "id": "faıojwopwa654afgwa",
         "name": "Dell XPS 13 Plus",
         "description": "Dell'in en yeni ultra taşınabilir dizüstü bilgisayarı. 13,4 inç OLED ekrana, Intel Core i7-13700H işlemciye ve Nvidia GeForce RTX 3060 Ti GPU'ya sahip.",
         "price": 29.999,
@@ -88,7 +88,7 @@ export const products = [
         ]
     },
     {
-        "id": "5",
+        "id": "awoırqp056qwq",
         "name": "MacBook Air M2",
         "description": "Apple'ın en yeni MacBook Air'i. 13,6 inç Liquid Retina ekrana, M2 işlemciye ve Apple Silicon ailesinin en yeni grafik çipi olan M2 GPU'ya sahip.",
         "price": 24.999,
