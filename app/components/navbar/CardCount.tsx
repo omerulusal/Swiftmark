@@ -10,7 +10,7 @@ const CardCount = () => {
   return (
     <div className="hidden md:flex relative cursor-pointer" onClick={() => router.push("/cart")}>
       <MdShoppingBasket size={24} />
-      <span className={spanStil}>{topUruns?.length}</span>
+      {topUruns && <span className={spanStil}>{topUruns?.length}</span>}
     </div>
   )
 }
