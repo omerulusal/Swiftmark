@@ -2,7 +2,7 @@
 import Image from "next/image"
 import PageContainer from "../containers/PageContainer"
 import Sayac from "../general/Sayac"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Rating } from "@mui/material"
 import Button from "../general/Button"
 import Comment from "./Comment"
@@ -21,7 +21,6 @@ export type UrunKartiProps = {
 
 
 const DetailClient = ({ product }: { product: any }) => {
-  console.log(product, "from detailClient")
   const [urunKarti, setUrunKarti] = useState<UrunKartiProps>({
     id: product?.id,
     name: product?.name,
@@ -31,6 +30,7 @@ const DetailClient = ({ product }: { product: any }) => {
     image: product?.image,
     inStock: product?.inStock,
   })
+
 
   const arttirFunc = () => {
     if (urunKarti.quantity == 10) return;
@@ -42,17 +42,19 @@ const DetailClient = ({ product }: { product: any }) => {
     //sepette gönderilen ürün miktarı en az 1 olabilir
     setUrunKarti(prev => ({ ...prev, quantity: prev.quantity - 1 }))
   }
-
   const rate = product?.reviews?.reduce((acc: number, item: any) => acc + item.rating, 0) / product?.reviews?.length
   // rate'in açıklamasını Product Carttan bulabilirsin
+  const { sptEkle, topUruns,urnKartQty } = UseCart()//useContext
 
 
-  const { urnKartQty } = UseCart()
-  // urnKartQty useCart.tsx'ten gelir
-  console.log(urnKartQty,"URUN KARTI MİKTARI")
-
-
-
+  const [displayBtn, setDisplayBtn] = useState<boolean>(false)
+  useEffect(() => {
+    setDisplayBtn(false)
+    const controlDisplay: any = topUruns?.findIndex((kart) => kart.id == product.id);
+    if (controlDisplay > -1) {
+      setDisplayBtn(true)
+    }
+  }, [topUruns, product.id]);
 
   return (
     <div className="my-10">
@@ -72,11 +74,23 @@ const DetailClient = ({ product }: { product: any }) => {
                 : <div className="text-red-600">Ürün Stokta Yok</div>
               }
             </div>
-            <Sayac urunKarti={urunKarti} arttirFunc={arttirFunc} azaltFunc={azaltFunc} />
             <div className="text-xl md:text-2xl text-teal-800 font-bold mt-5" >
               {`${product?.price} €`}
             </div>
-            <Button onClick={() => { }} small text="Sepete Ekle" />
+            {
+              displayBtn ? (
+                <>
+                  <Button onClick={() => { }} outline small text="Ürün Sepete Ekli" />
+                </>
+              )
+                : (
+                  <>
+                    <Sayac urunKarti={urunKarti} arttirFunc={arttirFunc} azaltFunc={azaltFunc} />
+                    <Button onClick={() => sptEkle(urunKarti)} small text="Sepete Ekle" />
+                  </>
+                )
+            }
+
           </div>
         </div>
         <Heading fsBig text="Yorumlar" />
