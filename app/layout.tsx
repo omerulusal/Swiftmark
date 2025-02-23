@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Navbar from './components/navbar/Navbar'
 import Footer from './components/footer/Footer'
+import KartProvider from '@/provider/KartProvider'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -20,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <KartProvider>
           <div className="flex flex-col min-h-screen">
             <Navbar />
             <main className='flex-grow'>
@@ -27,6 +29,7 @@ export default function RootLayout({
             </main>
             <Footer />
           </div>
+        </KartProvider>
       </body>
     </html>
   )

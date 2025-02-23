@@ -66,7 +66,7 @@ export const defaultUrunler = [
         ]
     },
     {
-        "id": "faıojwopwa654afgwa",
+        "id": "awopfgjkea5gss9",
         "name": "Dell XPS 13 Plus",
         "description": "Dell'in en yeni ultra taşınabilir dizüstü bilgisayarı. 13,4 inç OLED ekrana, Intel Core i7-13700H işlemciye ve Nvidia GeForce RTX 3060 Ti GPU'ya sahip.",
         "price": 29.999,
@@ -88,7 +88,7 @@ export const defaultUrunler = [
         ]
     },
     {
-        "id": "awoırqp056qwq",
+        "id": "awo85gjke45gss9",
         "name": "MacBook Air M2",
         "description": "Apple'ın en yeni MacBook Air'i. 13,6 inç Liquid Retina ekrana, M2 işlemciye ve Apple Silicon ailesinin en yeni grafik çipi olan M2 GPU'ya sahip.",
         "price": 24.999,
