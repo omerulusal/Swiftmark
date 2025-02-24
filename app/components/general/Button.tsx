@@ -20,7 +20,7 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <button type="button"
-      className={`rounded-lg p-3 duration-700
+      className={`my-1 flex items-center justify-center gap-2 rounded-lg p-3 duration-700
         ${outline ? "border hover:bg-slate-200 text-black" : "bg-black text-white"} 
         ${small ? "w-full md:w-[250px]" : "w-full"}`}
       disabled={disabled} onClick={onClick}

@@ -7,3 +7,6 @@ const AuthContainer = ({ children }: { children: React.ReactNode }) => {
 }
 
 export default AuthContainer
+/**
+ * Login ve Register Sayfaları buraya children olaarak gelir.
+ */

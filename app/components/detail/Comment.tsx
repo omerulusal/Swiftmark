@@ -10,7 +10,7 @@ const Comment = ({ uYorum }: { uYorum: any }) => {
         <div>{uYorum?.user?.name ? uYorum?.user?.name : "User"}</div>
         <Rating size='small' name="read-only" value={uYorum?.rating} readOnly />
       </div>
-      <div className="px-4 font-sans text-gray-500 max-w-2xl">{uYorum?.review}</div>
+      <div className="px-4 pb-4 font-sans text-gray-500 max-w-2xl">{uYorum?.review}</div>
     </div>
   )
 }
