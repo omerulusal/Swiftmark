@@ -1,5 +1,5 @@
 // https://authjs.dev/reference/adapter/prisma <--- source
-// https://authjs.dev/guides/providers/credentials <--- source
+// https://next-auth.js.org/providers/credentials <--- source
 import CredentialsProvider from "next-auth/providers/credentials";
 import NextAuth, { AuthOptions } from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
@@ -18,7 +18,7 @@ export const authOptions: AuthOptions = {
             name: "credentials",
             credentials: {
                 email: { label: "email", type: "text" },
-                password: { label: "Password", type: "parola" }
+                password: { label: "Password", type: "password" }
             },
             async authorize(credentials, req) {
                 if (!credentials?.email || !credentials?.password) {

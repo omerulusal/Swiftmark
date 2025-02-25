@@ -1,0 +1,3 @@
+prisma klasöründe schema.prisma adıyla veritabanı modelimi oluşturduktan sonra
+npx prisma db push diyerek bunu mongodb içerisinde oluşturdum tabii bu model yapısının içeirisinde envoriment
+olucak ve bu benim mongodb connection string'im olmalı
