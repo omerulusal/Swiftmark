@@ -10,8 +10,14 @@ import Link from "next/link"
 import { signIn } from "next-auth/react"
 import toast from "react-hot-toast"
 import { useRouter } from "next/navigation"
+import { User } from "@prisma/client"
+import { useEffect } from "react"
 
-const LoginClient = () => {
+interface LoginClientProps {
+  currentUser: User | null | undefined
+}
+
+const LoginClient: React.FC<LoginClientProps> = ({ currentUser }) => {
   const router = useRouter()
 
   const {
@@ -37,6 +43,13 @@ const LoginClient = () => {
   }
   // Bu üstteki Yapıyı react hook form dökümanından aldım
 
+  useEffect(() => {
+    if (currentUser) {
+      // Eger sayfa yuklendiginde currentUser varsa kişi giriş yapmıştır.
+      router.push("/cart");
+      router.refresh();
+    }
+  }, []);
 
   return (
     <AuthContainer>
@@ -49,7 +62,7 @@ const LoginClient = () => {
         <div className="mt-3 border border-b-0 border-zinc-300 mx-auto w-72"></div>
         <div className="my-3 flex gap-5">
           <Button outline small onClick={handleSubmit(onSubmit)} text="Giriş Yap" />
-          <Button small icon={FaGoogle} outline onClick={() => { }} text="Google İle Giriş Yap" />
+          <Button small icon={FaGoogle} outline onClick={() => signIn("google")} text="Google İle Giriş Yap" />
         </div>
         <Link className="text-xs underline hover:no-underline ml-1 text-slate-500 hover:text-teal-700 hover:text-sm transform ease-in duration-500" href={"/register"}>Kayıt Ol</Link>
       </div>
@@ -58,3 +71,8 @@ const LoginClient = () => {
 }
 
 export default LoginClient
+/**
+ * currentUser login sayfasındaki page.tsx'ten gelir.
+ * mevcut user login yaptıktan sonra url'e login yazıp tekrar yapmaya calışırsa
+ * /cart sayfasına yönlendirilecek. 
+ */

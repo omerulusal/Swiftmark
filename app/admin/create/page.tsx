@@ -1,9 +1,23 @@
-import React from 'react'
+import { getCurrentUser } from "@/app/actions/getCurrentUser"
+import CreateForm from "@/app/components/admin/CreateForm";
+import AuthContainer from "@/app/components/containers/AuthContainer";
+import WarningText from "@/app/components/WarningText";
 
-const page = () => {
+const CreateProduct = async () => {
+  const currentUser = await getCurrentUser()
+  if (!currentUser || currentUser.role !== "USER") {
+    //role schema.prismadaki enumdan gelir
+    return <WarningText text="Urun Ekleme Yetkiniz Yok" />;
+  }
   return (
-    <div>page</div>
+    <AuthContainer>
+      <CreateForm />
+    </AuthContainer>
   )
 }
 
-export default page
+export default CreateProduct
+/**
+ * Urun oluşturma sayfasına gelen user'ın rolunu kontrol ediyorum 
+ * sadece admin oluşturabilir.
+ */

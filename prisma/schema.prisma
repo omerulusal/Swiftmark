@@ -35,7 +35,7 @@ model Product{
   category      String
   inStock       Boolean
   image         String
-  reviews       Review[]
+  reviews       Review[]//yorumlar Review modelinden gelicek
 }
 
 model Review{
@@ -47,6 +47,7 @@ model Review{
   createdDate   DateTime @default(now())
 
   product Product @relation(fields: [productId], references: [id])
+  // Product modeliyle ilişkilendirdim(cunku yorumlarda productId gerekiyor referans olarak id sini aldım)
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
 }
@@ -71,3 +72,4 @@ enum Role{
     USER
     ADMIN
 }
+//Primary Key @id @default(auto()) @map("_id") @db.ObjectId

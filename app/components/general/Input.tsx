@@ -19,7 +19,7 @@ const Input: React.FC<InputProps> = ({
       type={type}
       {...register(id, { required })}//react-hook-formda gereken yapı
       disabled={disabled}
-      className={`w-full h-12 p-3 rounded-md outline-none my-2 ${errors[id] ? "border border-red-500" : "border border-slate-300"}`}
+      className={`w-32 gap-3 md:gap-0 mx-5 md:mx-0  md:w-full h-12 p-3 rounded-md outline-none my-2 ${errors[id] ? "border border-red-500" : "border border-slate-300"}`}
     />
   )
 }

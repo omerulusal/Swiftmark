@@ -1,8 +1,24 @@
-import React from 'react'
+import Link from "next/link";
+import { IconType } from "react-icons";
 
-const AdminSidebarItem = () => {
+interface AdminSidebarItemProps {
+  selected?: boolean;
+  name: string;
+  icon: IconType;
+  url: string;
+
+}
+const AdminSidebarItem: React.FC<AdminSidebarItemProps> = ({
+  selected,
+  name,
+  icon: Icon,
+  url,
+}) => {
   return (
-    <div>AdminSidebarItem</div>
+    <Link className={`cursor-pointer flex items-center gap-2 ${selected ? "underline text-black font-bold" : "font-medium text-white"}`}href={url}>
+      <Icon size={25} />
+      <div>{name}</div>
+    </Link>
   )
 }
 

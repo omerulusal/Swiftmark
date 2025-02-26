@@ -10,9 +10,13 @@ import axios from "axios"
 import toast from "react-hot-toast"
 import { signIn } from "next-auth/react"
 import { useRouter } from "next/navigation"
+import { useEffect } from "react"
+import { User } from "@prisma/client"
 
-
-const RegisterClient = () => {
+interface RegisterCProps {
+  currentUser: User | null | undefined
+}
+const RegisterClient: React.FC<RegisterCProps> = ({ currentUser }) => {
   const router = useRouter()
   const {
     register,
@@ -45,6 +49,16 @@ const RegisterClient = () => {
   // Bu üstteki Yapıyı react hook form dökümanından aldım
 
 
+  useEffect(() => {
+    if (currentUser) {
+      router.push("/cart")
+      //kullanıcı login yaptıgında tekrar login sayfasına gidemesin
+      router.refresh();
+    }
+  }, [])
+
+
+
   return (
     <AuthContainer>
       <div className="w-full md:w-[500px] p-3 shadow-2xl rounded-md shadow-teal-900">
@@ -57,7 +71,7 @@ const RegisterClient = () => {
         <div className="mt-3 border border-b-0 border-zinc-300 mx-auto w-72"></div>
         <div className="my-3 flex gap-5">
           <Button outline small onClick={handleSubmit(onSubmit)} text="Kayıt Ol" />
-          <Button small icon={FaGoogle} outline onClick={() => { }} text="Google İle Üye Ol" />
+          <Button small icon={FaGoogle} outline onClick={() => signIn("google")} text="Google İle Üye Ol" />
         </div>
         <Link className="text-xs underline hover:no-underline ml-1 text-slate-500 hover:text-teal-700 hover:text-sm transform ease-in duration-500" href={"/login"}>Zaten bir hesabım var.</Link>
       </div>
@@ -66,3 +80,7 @@ const RegisterClient = () => {
 }
 
 export default RegisterClient
+/**
+ * mevcut user login yaptıktan sonra url'e login yazıp tekrar yapmaya calışırsa
+ * /cart sayfasına yönlendirilecek. 
+ */
