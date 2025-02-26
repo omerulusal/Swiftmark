@@ -8,24 +8,25 @@ export async function POST(request: Request) {
         return NextResponse.error();
     }
     const body = await request.json();
-    const { name, description,brand,category,price,inStock,image } = body;
-    const urun = await prisma.product.create({
+    const { name, description, brand, category, price, inStock, image } = body;
+    const product = await prisma.product.create({
         data: {
             name,
             description,
             brand,
             category,
-            price:parseFloat(price),//gelen fiyatlar number tipinde olmalı
+            price:parseFloat(price),
+            // gelen priceların number tipinde olması gerektiginden parse edildi
             inStock,
-            image,
+            image
         }
     })
 
-    return NextResponse.json(urun);
+    return NextResponse.json(product);
     //oluşturduğum userı NextResponse üzerinden json formatında dbye yolladım
 
 }
 /**
- * Urun oluşturmak icin kullanıcının giriş yapması ve bu kullanıcının 
+ * product oluşturmak icin kullanıcının giriş yapması ve bu kullanıcının 
  * rolunun Admin olması gerekir.
  */

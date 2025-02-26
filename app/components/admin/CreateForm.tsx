@@ -12,10 +12,13 @@ import { useState } from "react"
 import toast from "react-hot-toast"
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import firebaseApp from "@/libs/firebase"
+import axios from "axios"
+import { useRouter } from "next/navigation"
+
 
 const CreateForm = () => {
-  const [resim, setResim] = useState<File | null>(null)
-  let [yuklenenRsm, setYuklenenRsm] = useState<string | null>(null)
+  const router = useRouter()
+  const [img, setImg] = useState<File | null>(null)
 
   const {
     register,
@@ -36,50 +39,47 @@ const CreateForm = () => {
     }
 
   })
-  const onSubmit: SubmitHandler<FieldValues> = async(veri) => {
-    console.log(veri)
-    const handleChange = async () => {
-      toast.success("Yukleme işlemi Başarılı")
-      try {
-        const storage = getStorage(firebaseApp);
-        const storageRef = ref(storage, 'images/swift.jpg');
-        const uploadTask = uploadBytesResumable(storageRef, resim);
-
-        await new Promise<void>((resolve, reject) => {
-          uploadTask.on('state_changed',
-            (snapshot) => {
-              switch (snapshot.state) {
-                case 'paused':
-                  console.log('Upload is paused');
-                  break;
-                case 'running':
-                  console.log('Upload is running');
-                  break;
-              }
-            },
-            (error) => {
-              reject(error);
-            },
-            () => {
-              getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                console.log('File available at', downloadURL);
-                setYuklenenRsm(downloadURL);
-              });
-              resolve();
-            }
-          );
-        })
-
-
-      } catch (error) {
-        console.log(error)
-        toast.error("Bir Hata Mevcut...")
-
+  const onSubmit: SubmitHandler<FieldValues> = async (veri) => {
+    try {
+      if (!img) {
+        toast.error("Lütfen bir resim seçiniz");
+        return;
       }
+
+      toast.loading("Resim yükleniyor...", { duration: 2000 });
+      
+      const storage = getStorage(firebaseApp);
+      const storageRef = ref(storage, `images/${Date.now()}-${img.name}`);
+      //storageRef, image'e benzersiz bir isim atar bu sayede tek görsel sorunu ortadan kalkar
+      const uploadTask = uploadBytesResumable(storageRef, img);
+
+      const downloadURL = await new Promise<string>((resolve, reject) => {
+        uploadTask.on('state_changed',
+          (snapshot) => {
+            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log('Upload is ' + progress + '% done');
+          },
+          (error) => {
+            toast.error("Resim yükleme hatası!");
+            reject(error);
+          },
+          async () => {
+            const url = await getDownloadURL(uploadTask.snapshot.ref);
+            resolve(url);
+          }
+        );
+      });
+
+      const yeniVeri = { ...veri, image: downloadURL };
+      
+      await axios.post("/api/product", yeniVeri);
+      toast.success("Ürün başarıyla eklendi");
+      router.refresh();
+      
+    } catch (error) {
+      console.log(error);
+      toast.error("Ürün eklenirken bir hata oluştu");
     }
-    await handleChange()
-    let yeniVeri = { ...veri, image: yuklenenRsm }
-    console.log(yeniVeri,"NEWDATTAAA")
   }
 
   const kategoriler = [
@@ -121,10 +121,10 @@ const CreateForm = () => {
   const changeFunc = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       // secilen bir file varsa img state'ine ilk file'ı yollar
-      setResim(e.target.files[0])
+      setImg(e.target.files[0])
     }
   }
-  console.log("DOSYAAA", resim)
+  console.log("DOSYAAA", img)
 
   return (
     <div>
@@ -174,6 +174,12 @@ export default CreateForm
 /**
  * Inputtaki id'ler defaultValues'taki keylerle aynı olmalı yoksa eşleşmez
  * bu Comp'i, admin/create sayfasında kullandım
+ * 
+ * burada hook form ile inputtaki verileri takip edip kayıt altına alıyorum
+ * hookformun handleSubmit methoduna onSubmit func'u veriyorum onun icerisine 
+ * inputlardaki veriler geliyor bu verilerle api/product urline axios ile post
+ * yapıyorum tabii aynı zamanda firebase'e yolladıgım image'ıda ekliyorum sonra
+ * bu veriler dbye kaydediliyor.
  * 
  * https://firebase.google.com/docs/storage/web/upload-files
  * Firebase dosya yukleme dökumanı (Promiseli bir yapıda ekledim)

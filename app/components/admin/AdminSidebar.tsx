@@ -18,6 +18,11 @@ const AdminSidebar = () => {
       url: "/admin/create"
     },
     {
+      name: "Urun Yonetimi",
+      icon: IoIosCreate,
+      url: "/admin/manage"
+    },
+    {
       name: "Siparisler",
       icon: MdBorderOuter,
       url: "/admin/order"

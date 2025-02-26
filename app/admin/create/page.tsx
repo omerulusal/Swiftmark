@@ -5,7 +5,7 @@ import WarningText from "@/app/components/WarningText";
 
 const CreateProduct = async () => {
   const currentUser = await getCurrentUser()
-  if (!currentUser || currentUser.role !== "USER") {
+  if (!currentUser || currentUser.role !== "ADMIN") {
     //role schema.prismadaki enumdan gelir
     return <WarningText text="Urun Ekleme Yetkiniz Yok" />;
   }
