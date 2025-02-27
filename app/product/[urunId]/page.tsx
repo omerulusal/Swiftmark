@@ -1,27 +1,24 @@
-import DetailClient from "@/app/components/detail/DetailClient";
-import { defaultUrunler } from "@/utils/DefaultProducts";
+import { getProductsId } from "@/app/actions/getProductsId"
+import DetailClient from "@/app/components/detail/DetailClient"
 
-
-type DetayProps = {
-    urunId?: string
+interface IParams {
+    urunId: string
 }
 //urnuId bana [urunId] adlı dinamik klasörden geliyor rotaya tekabul eder
 
-const Detail = ({ params }: { params: DetayProps }) => {
-    const { urunId } = params;
-    const product = defaultUrunler.find(urun => urun?.id == urunId);
-    // defaultUrünler içerisindeki ürünlerin idsi ile urlden gelen ürünün idsine eşit olanını bul dedim
-    console.log(product, "product");
+const ProductDetail = async ({ params }: { params: IParams }) => {
+    const product = await getProductsId({ productId: params.urunId })
+
+    if (!product) {
+        return <div>Ürün Bulunamadı</div>
+    }
 
     return (
-        <div>
-            <DetailClient product={product} />
-            {/* ürünleri DetailClienta props olarak yolladım */}
-        </div>
+        <DetailClient product={product} />
     )
 }
 
-export default Detail
+export default ProductDetail
 /**
  * ProductCartta herbir ürüne tıklayınca urle product/o ürüne ait olan id yazılacak.
  * sonra dinamik rotalama(klasör adları) sayesinde bu sayfa açılır. 

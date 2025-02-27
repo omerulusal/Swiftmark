@@ -1,16 +1,22 @@
-import React from 'react'
-import Heading from '../general/Heading'
-import { defaultUrunler } from '@/utils/DefaultProducts'
-import ProductCard from './ProductCard'
+"use client"
+import { Product } from "@prisma/client"
+import ProductCard from "./ProductCard"
 
-const Products = () => {
+interface ProductsProps {
+  products: Product[]
+}
+
+const Products: React.FC<ProductsProps> = ({ products }) => {
+  if (!products || products.length === 0) {
+    return <div>Ürün bulunamadı</div>
+  }
+
   return (
-    <div >
-      <Heading text='Tum Urunler' />
-      <div className='flex gap-4 flex-wrap md:gap-7 items-center px-3 md:px-10'>
-        {defaultUrunler.map((product) =>
+    <div>
+      <div className="flex gap-4 flex-wrap md:gap-7 items-center px-3 md:px-10">
+        {products.map((product) => (
           <ProductCard key={product.id} product={product} />
-        )}
+        ))}
       </div>
     </div>
   )

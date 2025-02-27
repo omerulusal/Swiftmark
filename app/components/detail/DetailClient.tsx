@@ -54,7 +54,7 @@ const DetailClient = ({ product }: { product: any }) => {
     if (controlDisplay > -1) {
       setDisplayBtn(true)
     }
-  }, [topUruns, product.id]);
+  }, [topUruns, product?.id]);
 
   return (
     <div className="my-10">
