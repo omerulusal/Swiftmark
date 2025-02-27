@@ -29,21 +29,21 @@ const User: React.FC<CurrentUserProps> = ({ currentUser }) => {
     return (
         <div onClick={() => setOpenMenu(pre => !pre)} className='hidden md:flex relative'>
             <div className='flex items-center gap-1 cursor-pointer'>
-                <AiOutlineUser size={25} />
+                <AiOutlineUser size={25} className=' mb-1.5 ' />
                 <div>{currentUser ? currentUser.name : "User"}</div>
             </div>
             {openMenu && (
-                <div className='absolute w-[200px] top-10 bg-teal-100 shadow-lg right-0 p-2 rounded-md'>
+                <div className='absolute w-[120px] top-10 bg-black/80 shadow-2xl right-0 p-2 rounded-md z-50 flex justify-center '>
                     {
                         currentUser ? (
                             <div className='space-y-1'>
-                                <div onClick={() => router.push("/admin/create")} className='text-slate-600 cursor-pointer'>Admin</div>
-                                <div onClick={() => menuFunc("logout")} className='text-slate-600 cursor-pointer'>Logout</div>
+                                <div onClick={() => router.push("/admin/create")} className='text-slate-300 cursor-pointer  hover:text-gray-100'>Admin</div>
+                                <div onClick={() => menuFunc("logout")} className='text-slate-300 cursor-pointer  hover:text-gray-100'>Logout</div>
                             </div>
                         ) : (
                             <div>
-                                <div onClick={() => menuFunc("register")} className='text-slate-600 cursor-pointer'>Register</div>
-                                <div onClick={() => menuFunc("login")} className='text-slate-600 cursor-pointer'>Login</div>
+                                <div onClick={() => menuFunc("register")} className='text-slate-300 cursor-pointer  hover:text-gray-100'>Register</div>
+                                <div onClick={() => menuFunc("login")} className='text-slate-300 cursor-pointer hover:text-gray-100'>Login</div>
                             </div>
                         )
                     }

@@ -2,7 +2,6 @@ import getProducts from "./actions/getProducts"
 import Products from "./components/home/Products"
 import PageContainer from "./components/containers/PageContainer"
 import Heading from "./components/general/Heading"
-import Category from "./components/home/Category"
 import Banner from "./components/home/Banner"
 
 export default async function Home() {
@@ -20,7 +19,6 @@ export default async function Home() {
 
   return (
     <div>
-      <Category />
       <Banner />
       <Heading center text="Tüm Ürünler" />
       <Products products={products} />
