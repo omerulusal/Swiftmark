@@ -8,5 +8,5 @@ export default textClip
 /**
  * const bol = text.split(" ");
  * return bol.length < 20 ? [...bol].join(" ") : bol.slice(0, 7).join(" ") +"...";
- * Bu Benim yaptığım farklı bir yöntem harflerle değilde kelimelerle böler.
+ * Bu yaptığım farklı bir yöntem harflerle değilde kelimelerle böler.
  */
