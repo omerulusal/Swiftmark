@@ -15,7 +15,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     const productRating = product?.reviews?.reduce((acc: number, item: any) => acc + item.rating, 0) / product?.reviews?.length
 
     return (
-        <div onClick={() => router.push(`/product/${product.id}`)} className="w-[240px] shadow-lg p-2 rounded-md cursor-pointer flex flex-col flex-1">
+        <div onClick={() => router.push(`/product/${product.id}`)} className="max-w-[240px] min-w-[240px] min-h-[300px] shadow-lg p-2 rounded-md cursor-pointer flex flex-col flex-1">
             <div className="relative h-[150px]">
                 <Image src={product.image} fill alt="product" className="object-contain" />
             </div>
