@@ -8,11 +8,6 @@ const AdminSidebar = () => {
   const pathname = usePathname()
   const adminPanel = [
     {
-      name: "Özetler",
-      icon: MdDashboard,
-      url: "/admin"
-    },
-    {
       name: "Urun Oluştur",
       icon: IoIosCreate,
       url: "/admin/create"
@@ -21,11 +16,6 @@ const AdminSidebar = () => {
       name: "Urun Yonetimi",
       icon: IoIosCreate,
       url: "/admin/manage"
-    },
-    {
-      name: "Siparisler",
-      icon: MdBorderOuter,
-      url: "/admin/order"
     },
   ]
   return (

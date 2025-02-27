@@ -2,7 +2,6 @@
 import { User } from '@prisma/client'
 import { signOut } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
-import { Router } from 'next/router'
 import { useState } from 'react'
 import { AiOutlineUser } from "react-icons/ai"
 
@@ -38,7 +37,7 @@ const User: React.FC<CurrentUserProps> = ({ currentUser }) => {
                     {
                         currentUser ? (
                             <div className='space-y-1'>
-                                <div onClick={() => router.push("/admin")} className='text-slate-600 cursor-pointer'>Admin</div>
+                                <div onClick={() => router.push("/admin/create")} className='text-slate-600 cursor-pointer'>Admin</div>
                                 <div onClick={() => menuFunc("logout")} className='text-slate-600 cursor-pointer'>Logout</div>
                             </div>
                         ) : (

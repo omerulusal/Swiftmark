@@ -90,7 +90,6 @@ const DetailClient = ({ product }: { product: any }) => {
                       outline 
                       small 
                       text="Ürün Sepete Ekli" 
-                      className="w-full md:w-auto bg-gray-100 hover:bg-gray-200"
                     />
                   ) : (
                     <div className="space-y-4">
@@ -103,7 +102,6 @@ const DetailClient = ({ product }: { product: any }) => {
                         onClick={() => sptEkle(urunKarti)} 
                         small 
                         text="Sepete Ekle" 
-                        className="w-full md:w-auto bg-teal-600 hover:bg-teal-700 text-white"
                       />
                     </div>
                   )}
@@ -113,7 +111,7 @@ const DetailClient = ({ product }: { product: any }) => {
           </div>
 
           <div className="mt-12">
-            <Heading fsBig text="Yorumlar" className="text-2xl font-bold text-gray-800 mb-6" />
+            <Heading fsBig text="Yorumlar" />
             <div className="grid md:grid-cols-2 gap-6">
               {product?.reviews?.map((uYorum: any, ind: number) => (
                 <Comment key={ind} uYorum={uYorum} />
