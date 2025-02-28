@@ -6,7 +6,9 @@ import textClip from "@/utils/textClip"
 import { Rating } from "@mui/material"
 
 interface ProductCardProps {
-    product: Product
+    product: Product & {
+        reviews: { rating: number[] }[]
+    }
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {

@@ -32,11 +32,11 @@ export const KartContextProvider = (props: Props) => {
             toast.success("Sepete Eklendi")
             return guncelSpt//sepetteki ürünleri döndür.
         });
-    }, [topUruns])
+    }, [])
 
     useEffect(() => {
         const getItem: any = localStorage.getItem("cart")//localstoreage'taki "cart" adlı depoyu aldım
-        const getItemParse: UrunKartiProps[] | null = JSON.parse(getItem)//
+        const getItemParse: UrunKartiProps[] | null = JSON.parse(getItem)//JSON.parse: JSON formatındaki veriyi JavaScript nesnesine çevirir.
         setTopUruns(getItemParse)//localstoreage'ta bulunan ürünleri ürünsepetine ekledim
     }, [])
 
@@ -108,7 +108,7 @@ export default UseCart
  * Context API oluşturdum. 
  * Önce contexti oluşturdum daha sonra contextin Provider yapısını kodladım bunu exportlayıp provider
  * klasöründe KartPorvider icerisinde karşıladım ve children alacağını belirttim(layoutta sarmalamak için)
- * sonra UseCart adında func oluşturdum ve bu KartContext'imi kullanacğımı belirttim eğer contexi boş olursa
+ * sonra UseCart adında func oluşturdum ve bu KartContext'imi kullanacağımı belirttim eğer contexi boş olursa
  * hata fırlatacak doluysa da contexi döndürecektir. 
  * *********************************************************************************************************
  * urnKartQty karttaki ürün(satın almaya hazır) miktarıdır örneğin 3 Iphone veya 1 macbook

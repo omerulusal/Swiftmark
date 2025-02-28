@@ -35,7 +35,6 @@ const CreateForm = () => {
       price: "",//api/product'ta parsefloat ettigimden number olucak
       image: "",
       inStock: false,
-
     }
 
   })
@@ -46,7 +45,7 @@ const CreateForm = () => {
         return;
       }
 
-      toast.loading("Resim yükleniyor...", { duration: 2000 });
+      toast.loading("Resim yükleniyor...", { duration: 2500 });
       
       const storage = getStorage(firebaseApp);
       const storageRef = ref(storage, `images/${Date.now()}-${img.name}`);

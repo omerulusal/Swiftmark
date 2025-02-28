@@ -8,10 +8,10 @@ import { UrunKartiProps } from '../detail/DetailClient'
 import Sayac from '../general/Sayac'
 
 const CartClient = () => {
-  const { topUruns, sptenSil, tumnSil, urnQtyArttir, urnQtyAzalt } = UseCart()
+  const { topUruns, sptenSil, tumnSil, urnQtyArttir, urnQtyAzalt } = UseCart()//context, hookstan geliyor
   console.log(topUruns, "UrunClient")
   if (!topUruns || topUruns.length == 0) {
-    return <div className='text-red-700'>Sepetinizde Ürün Bulunmamaktadır.</div>
+    return <div className='text-red-700 flex justify-center my-52 text-3xl'>Sepetinizde Ürün Bulunmamaktadır.</div>
   }
   const toplamFiyat = topUruns?.reduce((acc: number, item: UrunKartiProps) => acc + (item.quantity * item.price), 0)
   const stil = "w-1/5"
@@ -39,8 +39,8 @@ const CartClient = () => {
                       className="object-contain" 
                     />
                   </div>
-                  <div className="font-medium text-gray-800">{urn?.name}</div>
-                  <div className="flex justify-center">
+                  <div className="font-medium text-gray-800 w-52">{urn?.name}</div>
+                  <div className="flex justify-center -ml-32">
                     <Sayac 
                       arttirFunc={() => urnQtyArttir(urn)} 
                       azaltFunc={() => urnQtyAzalt(urn)} 

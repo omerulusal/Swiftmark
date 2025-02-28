@@ -1,7 +1,6 @@
 "use client"
 import { Product } from "@prisma/client"
 import { DataGrid, GridColDef } from "@mui/x-data-grid"
-import Button from "../general/Button"
 import { useCallback } from "react"
 import { deleteObject, getStorage, ref } from "firebase/storage"
 import firebaseApp from "@/libs/firebase"
@@ -98,4 +97,5 @@ const ManageClient: React.FC<ManageClientProps> = ({ products }) => {
 export default ManageClient
 /**
  * https://mui.com/x/react-data-grid/ 
+ * admin/manage tenb veri aiıyor ürün yönetimi sayfasıdır.
  */

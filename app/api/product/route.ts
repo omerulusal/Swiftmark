@@ -23,7 +23,7 @@ export async function POST(request: Request) {
     })
 
     return NextResponse.json(product);
-    //oluşturduğum userı NextResponse üzerinden json formatında dbye yolladım
+    //oluşturduğum urunu NextResponse üzerinden json formatında dbye yolladım
 
 }
 /**

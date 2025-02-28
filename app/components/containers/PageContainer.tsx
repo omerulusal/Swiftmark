@@ -5,6 +5,6 @@ const PageContainer = ({ children }: { children: React.ReactNode }) => {
         </div>
     )
 }
-// DetailClienttan children alır 
+// DetailClient'tan ve CartClient'tan children alır 
 
 export default PageContainer

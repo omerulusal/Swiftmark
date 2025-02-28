@@ -52,7 +52,6 @@ SwiftMark, modern web teknolojileri kullanılarak geliştirilmiş bir e-ticaret 
 
 ```
 1. Projeyi klonlayın:
-```bash
 git clone https://github.com/kullaniciadi/swiftmark.git
 cd swiftmark
 ```
@@ -67,8 +66,8 @@ npm install
 
 ```bash
 env
-   DATABASE_URL="mongodb_baglanti_url"
-   NEXTAUTH_SECRET="gizli_anahtar"
+DATABASE_URL="mongodb_baglanti_url"
+NEXTAUTH_SECRET="gizli_anahtar"
 GOOGLE_CLIENT_ID="google_client_id"
 GOOGLE_CLIENT_SECRET="google_client_secret"
 FIRE_BASE_API="firebase_api_key"

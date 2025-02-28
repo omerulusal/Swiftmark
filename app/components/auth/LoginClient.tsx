@@ -49,13 +49,13 @@ const LoginClient: React.FC<LoginClientProps> = ({ currentUser }) => {
       router.push("/cart");
       router.refresh();
     }
-  }, []);
+  }, [currentUser,router]);
 
   return (
     <AuthContainer>
       <div className="w-full md:w-[500px] p-3 shadow-2xl rounded-md shadow-teal-900">
         <Heading text="Login" center />
-        <div className="">
+        <div>
           <Input placeholder="Email" type="mail" id="email" errors={errors} register={register} required />
           <Input placeholder="Şifre" type="password" id="password" errors={errors} register={register} required />
         </div>
@@ -73,6 +73,6 @@ const LoginClient: React.FC<LoginClientProps> = ({ currentUser }) => {
 export default LoginClient
 /**
  * currentUser login sayfasındaki page.tsx'ten gelir.
- * mevcut user login yaptıktan sonra url'e login yazıp tekrar yapmaya calışırsa
+ * mevcut user giriş yaptıktan sonra url'e login yazıp tekrar yapmaya calışırsa
  * /cart sayfasına yönlendirilecek. 
  */

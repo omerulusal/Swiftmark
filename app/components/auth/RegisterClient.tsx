@@ -55,7 +55,7 @@ const RegisterClient: React.FC<RegisterCProps> = ({ currentUser }) => {
       //kullanıcı login yaptıgında tekrar login sayfasına gidemesin
       router.refresh();
     }
-  }, [])
+  }, [currentUser,router])
 
 
 
@@ -63,7 +63,7 @@ const RegisterClient: React.FC<RegisterCProps> = ({ currentUser }) => {
     <AuthContainer>
       <div className="w-full md:w-[500px] p-3 shadow-2xl rounded-md shadow-teal-900">
         <Heading text="Register" center />
-        <div className="">
+        <div>
           <Input placeholder="Ad" type="text" id="name" errors={errors} register={register} required />
           <Input placeholder="Email" type="mail" id="email" errors={errors} register={register} required />
           <Input placeholder="Şifre" type="password" id="password" errors={errors} register={register} required />
@@ -81,6 +81,6 @@ const RegisterClient: React.FC<RegisterCProps> = ({ currentUser }) => {
 
 export default RegisterClient
 /**
- * mevcut user login yaptıktan sonra url'e login yazıp tekrar yapmaya calışırsa
+ * mevcut user kayıt yaptıktan sonra url'e register yazıp tekrar yapmaya calışırsa
  * /cart sayfasına yönlendirilecek. 
  */

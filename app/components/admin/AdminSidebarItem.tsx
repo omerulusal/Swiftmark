@@ -15,7 +15,7 @@ const AdminSidebarItem: React.FC<AdminSidebarItemProps> = ({
   url,
 }) => {
   return (
-    <Link className={`cursor-pointer flex items-center gap-2 ${selected ? "underline text-black font-bold" : "font-medium text-gray-500"}`}href={url}>
+    <Link className={`cursor-pointer flex items-center gap-2 ${selected ? "underline text-black font-bold" : "font-medium text-gray-500"}`} href={url}>
       <Icon size={25} />
       <div>{name}</div>
     </Link>

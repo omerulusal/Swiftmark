@@ -1,5 +1,4 @@
 "use client"
-import { MdBorderOuter, MdDashboard } from "react-icons/md"
 import { IoIosCreate } from "react-icons/io"
 import AdminSidebarItem from "./AdminSidebarItem"
 import { usePathname } from "next/navigation"

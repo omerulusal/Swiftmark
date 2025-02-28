@@ -19,4 +19,5 @@ export default CardCount
 
 /**
  * md:flex ile pc de göruncek aynısını searchtada yaptım
+ * Sepete urun ekledigimde sepet iconu uzerindeki sayı dinamik olarak degişecek
  */
