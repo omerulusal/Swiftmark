@@ -57,49 +57,67 @@ const DetailClient = ({ product }: { product: any }) => {
   }, [topUruns, product?.id]);
 
   return (
-    <div className="my-10">
+    <div className="min-h-screen bg-gray-50 py-8">
       <PageContainer>
-        <div className="block md:flex gap-10 justify-center">
-          <div className="relative h-[400px] w-[400px] mb-3 md:mb-0">
-            <Image src={product?.image} fill alt="Product Image" />
+        <div className="max-w-6xl mx-auto">
+          <div className="bg-white rounded-xl shadow-lg p-6 md:p-8">
+            <div className="block md:flex gap-10">
+              <div className="relative h-[400px] w-full md:w-[500px] mb-6 md:mb-0 rounded-lg overflow-hidden">
+                <Image 
+                  src={product?.image} 
+                  fill 
+                  alt="Product Image" 
+                  className="object-contain hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="flex-1 space-y-4">
+                <h1 className="text-2xl md:text-3xl font-semibold text-gray-800">{product?.name}</h1>
+                <Rating name="read-only" value={rate} readOnly className="text-yellow-400" />
+                <p className="text-gray-600 leading-relaxed">{product?.description}</p>
+                <div className="flex items-center gap-3 text-sm">
+                  <span className="font-medium">STOK DURUMU:</span>
+                  {product?.inStock ? (
+                    <span className="text-green-500 font-medium">Ürün Stokta Mevcut</span>
+                  ) : (
+                    <span className="text-red-500 font-medium">Ürün Stokta Yok</span>
+                  )}
+                </div>
+                <div className="text-3xl font-bold text-teal-700">{product?.price} €</div>
+                <div className="pt-4">
+                  {displayBtn ? (
+                    <Button 
+                      onClick={() => {}} 
+                      outline 
+                      small 
+                      text="Ürün Sepete Ekli" 
+                    />
+                  ) : (
+                    <div className="space-y-4">
+                      <Sayac 
+                        urunKarti={urunKarti} 
+                        arttirFunc={arttirFunc} 
+                        azaltFunc={azaltFunc} 
+                      />
+                      <Button 
+                        onClick={() => sptEkle(urunKarti)} 
+                        small 
+                        text="Sepete Ekle" 
+                      />
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="w-full md:w-1/2 space-y-3">
-            <div className="text-xl md:text-2xl">{product?.name}</div>
-            <Rating name="read-only" value={rate} readOnly />
-            <div className="text-slate-600">{product?.description}</div>
-            <div className="flex items-center gap-2">
-              <div>STOK DURUMU:</div>
-              {product?.inStock ?
-                <div className="text-green-500">Ürün Stokta Mevcut</div>
-                : <div className="text-red-600">Ürün Stokta Yok</div>
-              }
-            </div>
-            <div className="text-xl md:text-2xl text-teal-800 font-bold mt-5" >
-              {`${product?.price} €`}
-            </div>
-            {
-              displayBtn ? (
-                <>
-                  <Button onClick={() => { }} outline small text="Ürün Sepete Ekli" />
-                </>
-              )
-                : (
-                  <>
-                    <Sayac urunKarti={urunKarti} arttirFunc={arttirFunc} azaltFunc={azaltFunc} />
-                    <Button onClick={() => sptEkle(urunKarti)} small text="Sepete Ekle" />
-                  </>
-                )
-            }
 
+          <div className="mt-12">
+            <Heading fsBig text="Yorumlar" />
+            <div className="grid md:grid-cols-2 gap-6">
+              {product?.reviews?.map((uYorum: any, ind: number) => (
+                <Comment key={ind} uYorum={uYorum} />
+              ))}
+            </div>
           </div>
-        </div>
-        <Heading fsBig text="Yorumlar" />
-        <div className="mt-16">
-          {product?.reviews && product?.reviews?.map((uYorum: any, ind: number) => {
-            return (
-              <Comment key={ind} uYorum={uYorum} />
-            )
-          })}
         </div>
       </PageContainer>
     </div>

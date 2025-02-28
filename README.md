@@ -1,6 +1,6 @@
 # SwiftMark E-Ticaret Projesi 🛍️
 
-SwiftMark, modern web teknolojileri kullanılarak geliştirilmiş kapsamlı bir e-ticaret platformudur. Next.js 13, TypeScript, Prisma, MongoDB ve Firebase teknolojilerini bir araya getirerek güçlü ve ölçeklenebilir bir alışveriş deneyimi sunar.
+SwiftMark, modern web teknolojileri kullanılarak geliştirilmiş bir e-ticaret platformudur. Next.js 13, TypeScript, Prisma, MongoDB ve Firebase teknolojilerini bir araya getirerek güçlü ve ölçeklenebilir bir alışveriş deneyimi sunar.
 
 ## 🚀 Özellikler
 
@@ -31,63 +31,76 @@ SwiftMark, modern web teknolojileri kullanılarak geliştirilmiş kapsamlı bir 
 - **Form Yönetimi:** React Hook Form
 
 ## 📁 Proje Yapısı
+
+```
 ├── app/
-│ ├── actions/ # Sunucu tarafı işlemler
-│ ├── admin/ # Admin panel sayfaları
-│ ├── api/ # API rotaları
-│ ├── cart/ # Sepet sayfası
-│ └── components/ # React bileşenleri
-├── hooks/ # Custom React hooks
-├── libs/ # Yardımcı kütüphaneler
-├── pages/ # Next.js sayfaları
-├── prisma/ # Veritabanı şeması
-├── provider/ # Context sağlayıcıları
-├── public/ # Statik dosyalar
-└── utils/ # Yardımcı fonksiyonlar
+│   ├── actions/     # Sunucu tarafı işlemler
+│   ├── admin/       # Admin panel sayfaları
+│   ├── api/         # API rotaları
+│   ├── cart/        # Sepet sayfası
+│   └── components/  # React bileşenleri
+├── hooks/           # Custom React hooks
+├── libs/            # Yardımcı kütüphaneler
+├── pages/           # Next.js sayfaları
+├── prisma/          # Veritabanı şeması
+├── provider/        # Context sağlayıcıları
+├── public/          # Statik dosyalar
+└── utils/           # Yardımcı fonksiyonlar
+```
 
 ## 🔧 Kurulum
 
+```
 1. Projeyi klonlayın:
-bash
+```bash
 git clone https://github.com/kullaniciadi/swiftmark.git
 cd swiftmark
+```
 
 2. Bağımlılıkları yükleyin:
-bash
+```bash
 npm install
+```
 
 3. Çevre değişkenlerini ayarlayın:
-`.env` dosyası oluşturun ve aşağıdaki değişkenleri ekleyin:
+   `.env` dosyası oluşturun ve aşağıdaki değişkenleri ekleyin:
+
+```bash
 env
-DATABASE_URL="mongodb_baglanti_url"
-NEXTAUTH_SECRET="gizli_anahtar"
+   DATABASE_URL="mongodb_baglanti_url"
+   NEXTAUTH_SECRET="gizli_anahtar"
 GOOGLE_CLIENT_ID="google_client_id"
 GOOGLE_CLIENT_SECRET="google_client_secret"
 FIRE_BASE_API="firebase_api_key"
-
+```
 
 4. Veritabanı şemasını senkronize edin:
-bash
+```bash
 npx prisma generate
-npx prisma db push
+npx prisma db push`
+```
 
 5. Geliştirme sunucusunu başlatın:
-`npm run dev`
-
+   `npm run dev`
 
 ## 📝 Önemli Bileşenler
 
 ### Kimlik Doğrulama
+
 `pages/api/auth/[...nextauth].ts` dosyası NextAuth.js yapılandırmasını içerir. Credentials ve Google provider'ları kullanılarak kimlik doğrulama sağlanır.
 
 ### Sepet Yönetimi
+
 `hooks/useCart.tsx` dosyası Context API kullanarak sepet yönetimini sağlar. Ürünler localStorage'da saklanır.
 
 ### Admin Paneli
+
 `app/admin/` dizini altında yönetici işlevleri bulunur. Ürün ekleme/silme gibi işlemler buradan yapılır.
 
 ### Veritabanı Şeması
+
 `prisma/schema.prisma` dosyası MongoDB koleksiyonlarının yapısını tanımlar:
+
 - User (Kullanıcılar)
 - Product (Ürünler)
 - Review (Yorumlar)
@@ -100,7 +113,3 @@ npx prisma db push
 3. Değişikliklerinizi commit edin (`git commit -am 'Yeni özellik eklendi'`)
 4. Dalınıza push yapın (`git push origin yeni-ozellik`)
 5. Bir Pull Request oluşturun
-
-## 📄 Lisans
-
-Bu proje MIT lisansı altında lisanslanmıştır. Daha fazla bilgi için `LICENSE` dosyasına bakın.

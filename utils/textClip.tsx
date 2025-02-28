@@ -1,5 +1,5 @@
 const textClip = (text: string) => {
-    return text.length < 40 ? text : text.slice(0, 40) + "...";
+    return text.length < 20 ? text : text.slice(0, 20) + "...";
     // eger textin boyu 35 den buyukse texti 35den sonra kırpıp 3 nokta ekler.
 }
 
