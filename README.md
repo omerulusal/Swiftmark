@@ -1,29 +1,106 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# SwiftMark E-Ticaret Projesi 🛍️
 
-## Getting Started
+SwiftMark, modern web teknolojileri kullanılarak geliştirilmiş kapsamlı bir e-ticaret platformudur. Next.js 13, TypeScript, Prisma, MongoDB ve Firebase teknolojilerini bir araya getirerek güçlü ve ölçeklenebilir bir alışveriş deneyimi sunar.
 
-First, run the development server:
+## 🚀 Özellikler
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- 👤 Kullanıcı kimlik doğrulama (NextAuth.js)
+  - Email/Şifre ile kayıt ve giriş
+  - Google hesabı ile giriş
+- 🛒 Gelişmiş sepet yönetimi
+  - Ürün ekleme/çıkarma
+  - Miktar güncelleme
+  - Yerel depolama ile sepet kalıcılığı
+- 📦 Ürün yönetimi
+  - Kategorilere göre filtreleme
+  - Arama fonksiyonu
+  - Detaylı ürün sayfaları
+- ⭐ Ürün değerlendirme sistemi
+- 👨‍💼 Admin paneli
+  - Ürün ekleme/silme
+  - Stok yönetimi
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Teknoloji Yığını
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Frontend:** Next.js 13, TypeScript, Tailwind CSS
+- **Backend:** Next.js API Routes
+- **Veritabanı:** MongoDB, Prisma ORM
+- **Kimlik Doğrulama:** NextAuth.js
+- **Dosya Depolama:** Firebase Storage
+- **Durum Yönetimi:** React Context API
+- **Form Yönetimi:** React Hook Form
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 📁 Proje Yapısı
+├── app/
+│ ├── actions/ # Sunucu tarafı işlemler
+│ ├── admin/ # Admin panel sayfaları
+│ ├── api/ # API rotaları
+│ ├── cart/ # Sepet sayfası
+│ └── components/ # React bileşenleri
+├── hooks/ # Custom React hooks
+├── libs/ # Yardımcı kütüphaneler
+├── pages/ # Next.js sayfaları
+├── prisma/ # Veritabanı şeması
+├── provider/ # Context sağlayıcıları
+├── public/ # Statik dosyalar
+└── utils/ # Yardımcı fonksiyonlar
 
-## PREVIEW
-<img width="947" alt="5" src="https://github.com/omerulusal/ecommerce-with-Typescript/assets/96357374/1632212b-fb9a-449f-88aa-bc36223f77a4">
-<img width="947" alt="4" src="https://github.com/omerulusal/ecommerce-with-Typescript/assets/96357374/5525a311-960a-4425-b289-46744032f8d5">
-<img width="947" alt="3" src="https://github.com/omerulusal/ecommerce-with-Typescript/assets/96357374/ac1f29ab-ccfc-4dc9-9b8a-68cfa12ea228">
-<img width="952" alt="2" src="https://github.com/omerulusal/ecommerce-with-Typescript/assets/96357374/09e35f30-c831-46a5-9642-dd6232ec8e42">
-<img width="947" alt="1" src="https://github.com/omerulusal/ecommerce-with-Typescript/assets/96357374/5386bee2-5e49-4c6e-91af-bfe862414803">
+## 🔧 Kurulum
 
+1. Projeyi klonlayın:
+bash
+git clone https://github.com/kullaniciadi/swiftmark.git
+cd swiftmark
+
+2. Bağımlılıkları yükleyin:
+bash
+npm install
+
+3. Çevre değişkenlerini ayarlayın:
+`.env` dosyası oluşturun ve aşağıdaki değişkenleri ekleyin:
+env
+DATABASE_URL="mongodb_baglanti_url"
+NEXTAUTH_SECRET="gizli_anahtar"
+GOOGLE_CLIENT_ID="google_client_id"
+GOOGLE_CLIENT_SECRET="google_client_secret"
+FIRE_BASE_API="firebase_api_key"
+
+
+4. Veritabanı şemasını senkronize edin:
+bash
+npx prisma generate
+npx prisma db push
+
+5. Geliştirme sunucusunu başlatın:
+`npm run dev`
+
+
+## 📝 Önemli Bileşenler
+
+### Kimlik Doğrulama
+`pages/api/auth/[...nextauth].ts` dosyası NextAuth.js yapılandırmasını içerir. Credentials ve Google provider'ları kullanılarak kimlik doğrulama sağlanır.
+
+### Sepet Yönetimi
+`hooks/useCart.tsx` dosyası Context API kullanarak sepet yönetimini sağlar. Ürünler localStorage'da saklanır.
+
+### Admin Paneli
+`app/admin/` dizini altında yönetici işlevleri bulunur. Ürün ekleme/silme gibi işlemler buradan yapılır.
+
+### Veritabanı Şeması
+`prisma/schema.prisma` dosyası MongoDB koleksiyonlarının yapısını tanımlar:
+- User (Kullanıcılar)
+- Product (Ürünler)
+- Review (Yorumlar)
+- Account (Hesaplar)
+
+## 🤝 Katkıda Bulunma
+
+1. Bu depoyu fork edin
+2. Yeni bir özellik dalı oluşturun (`git checkout -b yeni-ozellik`)
+3. Değişikliklerinizi commit edin (`git commit -am 'Yeni özellik eklendi'`)
+4. Dalınıza push yapın (`git push origin yeni-ozellik`)
+5. Bir Pull Request oluşturun
+
+## 📄 Lisans
+
+Bu proje MIT lisansı altında lisanslanmıştır. Daha fazla bilgi için `LICENSE` dosyasına bakın.
