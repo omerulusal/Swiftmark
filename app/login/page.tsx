@@ -6,7 +6,12 @@ const Login = async () => {
 
     return (
         <div>
-            <LoginClient currentUser={currentUser} />
+            <LoginClient currentUser={currentUser ? {
+                ...currentUser,
+                emailVerified: currentUser.emailVerified ? new Date(currentUser.emailVerified) : null,
+                createdAt: new Date(currentUser.createdAt),
+                updateAt: new Date(currentUser.updateAt)
+            } : null} />
         </div>
     )
 }

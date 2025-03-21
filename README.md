@@ -112,3 +112,13 @@ npx prisma db push`
 3. Değişikliklerinizi commit edin (`git commit -am 'Yeni özellik eklendi'`)
 4. Dalınıza push yapın (`git push origin yeni-ozellik`)
 5. Bir Pull Request oluşturun
+
+## 📸 Ekran Görüntüleri
+
+| ![Ana Sayfa](/public/1.png) | ![Ürün Detay](/public/2.png) |
+|:---:|:---:|
+| *Ana Sayfa* | *Ürün Detay Sayfası* |
+
+| ![Urun Ekleme](/public/3.png) | ![Admin Panel](/public/4.png) |
+|:---:|:---:|
+| *Sepet Sayfası* | *Admin Panel* |

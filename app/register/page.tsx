@@ -6,7 +6,7 @@ const Register = async () => {
     
     return (
         <div>
-            <RegisterClient currentUser={currentUser} />
+            <RegisterClient currentUser={currentUser as any} />
         </div>
     )
 }

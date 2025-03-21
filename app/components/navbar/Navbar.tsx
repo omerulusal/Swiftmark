@@ -13,7 +13,18 @@ const Navbar = async () => {
       <Logo />
       <Search />
       <CardCount />
-      <User currentUser={currentUser} />
+      <User currentUser={currentUser ? {
+        id: currentUser.id,
+        name: currentUser.name,
+        email: currentUser.email,
+        emailVerified: currentUser.emailVerified ? new Date(currentUser.emailVerified) : null,
+        image: currentUser.image,
+        hashedPassword: currentUser.hashedPassword,
+        createdAt: currentUser.createdAt ? new Date(currentUser.createdAt) : new Date(),
+        updateAt: currentUser.updatedAt ? new Date(currentUser.updatedAt) : new Date(),
+        role: currentUser.role
+      } : null} />
+      
       <Hamburger />
     </div>
   )

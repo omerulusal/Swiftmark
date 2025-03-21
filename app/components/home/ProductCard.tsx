@@ -7,14 +7,15 @@ import { Rating } from "@mui/material"
 
 interface ProductCardProps {
     product: Product & {
-        reviews: { rating: number[] }[]
+        reviews?: { rating: number[] }[]
     }
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     const router = useRouter()
 
-    const productRating = product?.reviews?.reduce((acc: number, item: any) => acc + item.rating, 0) / product?.reviews?.length
+    const productRating = product.reviews ? 
+        product.reviews.reduce((acc: number, item: any) => acc + item.rating, 0) / product.reviews.length : 0
 
     return (
         <div onClick={() => router.push(`/product/${product.id}`)} className="max-w-[240px] min-w-[240px] min-h-[300px] shadow-lg p-2 rounded-md cursor-pointer flex flex-col flex-1">
